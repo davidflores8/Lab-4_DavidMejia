@@ -50,12 +50,13 @@ int main()
 	matriz=crearMatriz(largo, ancho);
 	matriz=llenarMatriz(matriz, largo, ancho, principal);
 	printMatriz(matriz, largo, ancho);
-	liberarMatriz(matriz, largo);
-	cout<<"Hay "<<Cuenta(matriz, ancho, largo)<<" casillas seguras en la matriz"<<endl;
+	int contador=Cuenta(matriz, largo, ancho);
+	cout<<"Hay "<<contador<<" casillas seguras en la matriz"<<endl;
+	liberarMatriz(matriz, ancho);
 	return 0;	
 }
 
-int Cuenta (char** matriz, int ancho, int largo)
+int Cuenta (char** matriz, int largo, int ancho)
 {
 	int c=0;
 	for(int i=0; i<largo;i++)
