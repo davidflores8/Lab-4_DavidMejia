@@ -55,7 +55,13 @@ int main()
 
 void Cuenta (char** matriz, int ancho, int largo)
 {
+	for(int i=0; i<largo;i++)
+	{
+		for(int j=0; j<ancho;j++)
+		{
 
+		}
+	}
 
 }
 
