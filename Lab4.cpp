@@ -10,6 +10,7 @@ using std::stringstream;
 char** crearMatriz(int, int);
 void printMatriz(char**, int, int);
 void liberarMatriz(char**, int);
+char** llenarMatriz(char**, int, int, string);
 
 int main()
 {
@@ -32,7 +33,7 @@ int main()
         }
 	char p=' ';
 	stringstream ss;
-	for(int i=0;i<largo;i++)
+	for(int i=0;i<ancho;i++)
 	{
 		cout<<"Ingrese el caracter numero "<<i+1<<endl;
 		cin>>p;
@@ -46,10 +47,26 @@ int main()
 	principal=ss.str();
 	char** matriz=NULL;
 	matriz=crearMatriz(largo, ancho);
+	matriz=llenarMatriz(matriz, largo, ancho, principal);
 	printMatriz(matriz, largo, ancho);
 	liberarMatriz(matriz, largo);
 
 	return 0;	
+}
+
+char** llenarMatriz(char** matriz, int largo, int ancho, string principal)
+{
+	for(int i=0;i<largo;i++)
+	{
+		for(int j=0;j<ancho;j++)
+		{
+			if(i==0)
+			{
+				matriz[i][j]=principal[j];
+			}
+		}
+	}
+	return matriz;
 }
 
 void liberarMatriz(char** matriz, int largo)
@@ -75,7 +92,7 @@ void printMatriz(char** matrix, int largo, int ancho)
         {
                 for(int j=0;j<ancho;j++)
                 {
-                        cout<<matrix[i][j]<<" ";
+                        cout<<"[ "<<matrix[i][j]<<" ] ";
 
                 }
                 cout<<" "<<endl;
