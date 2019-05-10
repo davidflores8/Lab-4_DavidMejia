@@ -53,16 +53,20 @@ int main()
 	return 0;	
 }
 
-void Cuenta (char** matriz, int ancho, int largo)
+int Cuenta (char** matriz, int ancho, int largo)
 {
+	int c=0;
 	for(int i=0; i<largo;i++)
 	{
 		for(int j=0; j<ancho;j++)
 		{
-
+			if (matriz[i][j]=='.')
+			{
+				c=c+1;
+			}
 		}
 	}
-
+	return c;
 }
 
 char** llenarMatriz(char** matriz, int largo, int ancho, string principal)
