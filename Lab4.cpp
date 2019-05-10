@@ -53,6 +53,12 @@ int main()
 	return 0;	
 }
 
+void Cuenta (char** matriz, int ancho, int largo)
+{
+
+
+}
+
 char** llenarMatriz(char** matriz, int largo, int ancho, string principal)
 {
 	char primero=' ';
