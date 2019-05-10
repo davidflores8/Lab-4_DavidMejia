@@ -50,12 +50,14 @@ int main()
 	matriz=llenarMatriz(matriz, largo, ancho, principal);
 	printMatriz(matriz, largo, ancho);
 	liberarMatriz(matriz, largo);
-
 	return 0;	
 }
 
 char** llenarMatriz(char** matriz, int largo, int ancho, string principal)
 {
+	char primero=' ';
+	char segundo=' ';
+	char tercero=' '; 
 	for(int i=0;i<largo;i++)
 	{
 		for(int j=0;j<ancho;j++)
@@ -64,7 +66,44 @@ char** llenarMatriz(char** matriz, int largo, int ancho, string principal)
 			{
 				matriz[i][j]=principal[j];
 			}
-		}
+			else
+			{
+				
+				if (j==0)
+				{
+				
+					primero='.';
+					segundo=matriz[i-1][j];	
+					tercero=matriz[i-1][j+1];	
+				}
+				else if(j==ancho-1)
+				{
+					primero=matriz[i-1][j-1];
+					segundo=matriz[i-1][j];
+					tercero='.';
+				}
+				else
+				{
+					primero=matriz[i-1][j-1];
+					segundo=matriz[i-1][j];
+					tercero=matriz[i-1][j+1];
+				}
+					
+				if (primero=='^' && segundo=='^' && tercero=='.')
+                                        		matriz[i][j]='^';
+                                else if (primero=='.' && segundo=='^' && tercero=='^')
+                                        		matriz[i][j]='^';
+				else if (primero=='^' && segundo=='.' && tercero=='.')
+                                        		matriz[i][j]='^';
+	                        else if (primero=='.' && segundo=='.' && tercero=='^')
+                                        		matriz[i][j]='^';
+        	                else
+                                        		matriz [i][j]='.';
+		
+				
+				//cout<<"primero:  "<<primero<<"  Segundo:  "<<segundo<<"  Tercero: "<<tercero<<endl;
+			}		
+		}			
 	}
 	return matriz;
 }
@@ -75,10 +114,9 @@ void liberarMatriz(char** matriz, int largo)
         {
                 if(matriz[g]!=NULL)
                 {
-                        delete[]matriz[g];
+                        delete[] matriz[g];
                         matriz[g]=NULL;
                 }
-
         }
         if(matriz!=NULL)
         {
