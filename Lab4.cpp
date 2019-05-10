@@ -11,6 +11,7 @@ char** crearMatriz(int, int);
 void printMatriz(char**, int, int);
 void liberarMatriz(char**, int);
 char** llenarMatriz(char**, int, int, string);
+int Cuenta (char**, int, int);
 
 int main()
 {
@@ -50,6 +51,7 @@ int main()
 	matriz=llenarMatriz(matriz, largo, ancho, principal);
 	printMatriz(matriz, largo, ancho);
 	liberarMatriz(matriz, largo);
+	cout<<"Hay "<<Cuenta(matriz, ancho, largo)<<" casillas seguras en la matriz"<<endl;
 	return 0;	
 }
 
